@@ -25,4 +25,4 @@ sh ./scripts/start.sh
 ```
 
 ## Shared API Schema
-Shared API Schema is a system for type validation on backend. You can define API schema in ```sahred/api-schema/*.ts``` and validate types of request body in Express middleware as ```backend/src/routes.ts``` does. The system uses [quicktype](https://quicktype.io) and [Ajv](https://ajv.js.org) for type checking under the hood.
+Shared API Schema is a system for type validation on backend. You can define API schema in TypeScript files in [api-schema directory](https://github.com/michitaro/express-vue-boilerplate/tree/master/shared/api-schema), and validate types of request body in Express middleware like [this](https://github.com/michitaro/express-vue-boilerplate/blob/master/backend/src/routes.ts#L12). The system uses [quicktype](https://quicktype.io) and [Ajv](https://ajv.js.org) for type checking under the hood.
