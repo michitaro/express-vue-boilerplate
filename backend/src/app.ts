@@ -19,22 +19,22 @@ logger.setup(app)
 
 // SESSION
 const cookieSession = require('cookie-session')({
-    name: config.sessionCookieName,
-    secret: (secret => {
-        if (process.env.NODE_ENV == 'development') {
-            return '-'
-        }
-        else {
-            console.assert(secret && secret.length >= 64, `${config.sessionSecretEnvName} must be set and have its length of 64.`)
-            return secret
-        }
-    })(process.env[config.sessionSecretEnvName])
+  name: config.sessionCookieName,
+  secret: (secret => {
+    if (process.env.NODE_ENV == 'development') {
+      return '-'
+    }
+    else {
+      console.assert(secret && secret.length >= 64, `${config.sessionSecretEnvName} must be set and have its length of 64.`)
+      return secret
+    }
+  })(process.env[config.sessionSecretEnvName])
 })
 router.use(cookieSession)
 
 // devel
 if (process.env.NODE_ENV == 'development') {
-    devel.setup(app)
+  devel.setup(app)
 }
 
 // routes
