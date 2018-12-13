@@ -1,0 +1,1 @@
+docker run -it --rm -e SESSION_SECRET=$(openssl rand -hex 64) -p 8001:8001 simple-echo
