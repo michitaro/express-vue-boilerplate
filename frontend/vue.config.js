@@ -11,7 +11,7 @@ const devServer = {
 }
 
 module.exports = {
-    baseUrl: './',
+    publicPath: './',
     devServer,
     crossorigin: 'use-credentials',
 }
