@@ -3,6 +3,7 @@ import { session_get_response, session_post_request } from "~/shared/api-schema/
 import Axios, { AxiosError } from 'axios';
 import router from './router';
 import { UNPROCESSABLE_ENTITY, UNAUTHORIZED } from 'http-status-codes';
+import { spinnerize } from './axios';
 
 @Component
 class Session extends Vue {
@@ -15,7 +16,8 @@ class Session extends Vue {
     async login(user_name: string): Promise<{ error?: string }> {
         const reqbody: session_post_request = { user_name }
         try {
-            this.info = (await Axios.post<session_get_response>('./api/session', reqbody)).data
+            const axios = spinnerize(Axios.create())
+            this.info = (await axios.post<session_get_response>('./api/session', reqbody)).data
             return {}
         }
         catch (e) {
@@ -34,7 +36,8 @@ class Session extends Vue {
 
     async refresh(): Promise<{ error?: true }> {
         try {
-            this.info = (await Axios.get<session_get_response>('./api/session')).data
+            const axios = spinnerize(Axios.create())
+            this.info = (await axios.get<session_get_response>('./api/session')).data
             return {}
         }
         catch (e) {
