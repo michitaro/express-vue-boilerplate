@@ -4,7 +4,8 @@
   transition(name="fade")
     .modal(v-show="show2")
       transition(name="scale", appear)
-        v-progress-circular(:size="200", indeterminate, color="white")
+        div
+        //- v-progress-circular(:size="200", indeterminate, color="white")
 </template>
 
 

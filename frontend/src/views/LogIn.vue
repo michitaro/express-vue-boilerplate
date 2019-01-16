@@ -1,13 +1,15 @@
 <template lang="pug">
-  v-layout(justify-center)
-    v-flex(xs4)
-      form(@submit.prevent="submit")
-        v-card(raised)
-          v-card-text
-            v-text-field(label="Name", v-model="user_name", ref="user_name")
-          v-card-actions
-            v-spacer
-            v-btn(type="submit") Log In
+.center
+  form(@submit.prevent="submit")
+    dl
+      dt ID
+      dd
+        input(type="text", v-model="account_name", ref="account_name")
+      dt Password
+      dd
+        input(type="password", v-model="password")
+    .center
+      input(type="submit", value="LogIn")
 </template>
 
 
@@ -19,11 +21,12 @@ import router from '@/router';
 
 @Component
 export default class extends Vue {
-  user_name = ''
+  account_name = ''
+  password = ''
 
   async submit() {
-    const { user_name } = this
-    const { error } = await session.login(user_name)
+    const { account_name, password } = this
+    const { error } = await session.login(account_name, password)
     if (error != undefined) {
       alert(error)
     }
@@ -37,7 +40,23 @@ export default class extends Vue {
   }
 
   private focus() {
-    setTimeout(() => (this.$refs.user_name as any).focus(), 400)
+    (this.$refs.account_name as HTMLInputElement).focus()
   }
 }
 </script>
+
+
+<style lang="scss" scoped>
+form {
+  display: inline-block;
+  padding: 1em;
+  dd {
+    margin: 0;
+  }
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+</style>

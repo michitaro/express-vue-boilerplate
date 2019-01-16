@@ -13,8 +13,8 @@ class Session extends Vue {
         return !!this.info
     }
 
-    async login(user_name: string): Promise<{ error?: string }> {
-        const reqbody: session_post_request = { user_name }
+    async login(account_name: string, password: string): Promise<{ error?: string }> {
+        const reqbody: session_post_request = { account_name, password }
         try {
             const axios = spinnerize(Axios.create())
             this.info = (await axios.post<session_get_response>('./api/session', reqbody)).data

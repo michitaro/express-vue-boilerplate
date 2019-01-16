@@ -24,7 +24,9 @@ const router = new Router({
 })
 
 router.beforeEach(async (to, from, next) => {
+  console.log('beforeeach')
   if (!session.loggedIn && to.matched.every(r => !r.meta.public)) {
+    console.log('session refresh')
     const { error } = await session.refresh()
     if (error)
       return next({ name: 'login' })

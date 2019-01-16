@@ -1,8 +1,19 @@
-import { app } from "./app";
-import * as config from "~/shared/config";
+import * as server from './server'
+import * as db from './db'
+import { app } from './app';
+import * as config from '~/shared/config'
 
-const server = app.listen(config.servicePort, () => {
-    console.log('server start')
+
+async function main() {
+    await db.connect(config.mongoUrl)
+    await server.start(app)
+}
+
+
+process.addListener('unhandledRejection', error => {
+    console.error(error)
+    process.exit(1)
 })
 
-export { server }
+
+main()

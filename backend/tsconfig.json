@@ -6,6 +6,8 @@
     "resolveJsonModule": true,
     "allowJs": true,
     "baseUrl": ".",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "paths": {
       "@/*": [
         "src/*"

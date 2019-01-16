@@ -1,9 +1,12 @@
 import Vue from 'vue'
-import './plugins/vuetify'
 import App from './App.vue'
 import router from './router'
 import * as axios from './axios'
 import * as spinner from './spinner'
+import './style.scss'
+import * as VueMenu from '@hscmap/vue-menu'
+
+Vue.use(VueMenu, { prefix: 'menu' })
 
 spinner.install()
 axios.setup()
