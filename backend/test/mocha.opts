@@ -1,0 +1,2 @@
+--require espower-typescript/guess
+--require tsconfig-paths/register

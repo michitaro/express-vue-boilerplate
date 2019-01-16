@@ -3,3 +3,6 @@
 /shared
 /build
 /mongodb
+/coverage
+/.nyc_output
+.DS_Store
